@@ -1,0 +1,110 @@
+\ProvidesPackage{config/presento}
+\mode<presentation>
+
+% removing navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% packages
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{enumitem}
+
+\usepackage{multicol}
+
+% colors
+\definecolor{colormain}{HTML}{000000} % orange
+\definecolor{colornote}{HTML}{eeeeee} % dark gray for note
+\definecolor{colornormaltext}{HTML}{e5e8f8} % heavy dark gray for normal text
+\definecolor{colorbg}{HTML}{101316} % background
+\definecolor{coloraccent}{HTML}{a9bfe4} % red
+\definecolor{colorgold}{HTML}{db9a46} % blue
+
+\setbeamercolor{background canvas}{bg=colorbg}
+\setbeamercolor{normal text}{fg=colornormaltext}
+\setbeamercolor{title}{fg=coloraccent}
+\setbeamercolor{subtitle}{fg=colormain}
+\setbeamercolor{author}{fg=colorgold}
+\setbeamercolor{institution}{fg=colornormaltext}
+\setbeamercolor{block title}{fg=colorgold}
+\setbeamercolor*{bibliography entry author}{fg=colorgold}
+\setbeamercolor*{bibliography entry note}{fg=colorgold}
+\setbeamercolor{structure}{fg=colorgold}
+
+% font sizes
+\newcommand{\fontsizeone}{2em}
+\newcommand{\fontsizetwo}{1em}
+\newcommand{\fontsizethree}{0.875em}
+
+% beamer template changes
+\setbeamertemplate{frametitle}{
+	\vspace{0.40em}
+	\noindent
+	\hspace{-1.5em}
+	\color{colorgold}{\bfseries\insertframetitle}%
+}
+
+% frame counter
+\newcounter{totalfr}
+\setbeamertemplate{footline}{
+  \ifnum\inserttotalframenumber=1
+    \setcounter{totalfr}{2}
+  \else
+     \setcounter{totalfr}{\inserttotalframenumber}
+  \fi
+  \hfill{
+    \tikz{
+      \filldraw[fill=colorgold!40, draw=colorgold!50]  (0,0) -- (0.2,0) arc (0:{\value{framenumber}*(360/(\value{totalfr}-1))}:0.2) -- (0,0);
+      \node at (0,0) {\normalsize \color{colormain}\tiny{\insertframenumber}};
+    }
+  }
+  \hspace{2em}
+  \vspace*{1em}
+}
+
+% custom commands
+\newcommand{\hugetext}[1]{
+ {\fontsize{\fontsizeone}{\fontsizeone}{\selectfont #1}}
+}
+
+\newcommand{\largetext}[1]{
+ {\fontsize{\fontsizetwo}{\fontsizetwo}{\selectfont #1}}
+}
+
+\newcommand{\setnote}[1]{
+ {\fontsize{\fontsizethree}{\fontsizethree}\color{colornote}{\selectfont #1}}
+}
+
+\newcommand{\itemR}{
+ \item[\rtarrow]
+}
+
+\newcommand{\framecard}[2][colorgold]{
+  {\setbeamercolor{background canvas}{bg=#1}
+    \begin{frame}[plain]
+    \vfill
+    \begin{center}
+     {#2}
+    \end{center}
+    \vfill
+    \end{frame}
+  }
+}
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+  \vfill
+  \begin{flushleft}
+    {\usebeamercolor[fg]{title}\fontsize{3em}{3em}{\selectfont \inserttitle}}
+    \\[2ex]
+    {\usebeamercolor[fg]{subtitle}\largetext{\insertsubtitle}}
+  \end{flushleft}
+
+  \vfill
+  %\hfill
+  \begin{flushright}
+    {\usebeamercolor[fg]{author}\largetext{\insertauthor, {\usebeamercolor[fg]{institution}\insertinstitute}}}\\[2ex]
+    {\setnote{\insertdate}\par}
+  \end{flushright}
+  %\hfill
+}

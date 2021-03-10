@@ -1,0 +1,67 @@
+\documentclass[english]{presentation}
+%\setbeameroption{show notes on second screen}
+%\setbeameroption{show only notes}
+
+\usepackage{chngpage}
+\usepackage{array}
+\usepackage{tabularx}
+
+% Presento style file
+\usepackage{presento}
+
+\usepackage{stmaryrd}
+
+% strikethrough text
+\usepackage[normalem]{ulem}
+
+% macros
+\usepackage{mama}
+
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\aetop}{\text{a.e.}}
+\newcommand{\msbl}{\mathsf{msbl}}
+
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+\renewcommand<>{\sout}[1]{%
+	\alt#2{\beameroriginal{\sout}{#1}}{#1}%
+}
+
+\AtBeginDocument{%
+ \abovedisplayskip=1ex
+ \belowdisplayskip=1ex
+ \abovedisplayshortskip=0pt
+ \belowdisplayshortskip=7pt minus 4pt
+}
+
+\addbibresource{./bibliography.bib}
+
+\title{My name is\\[-.8ex]{\color{colorgold}stochastic calculus}\\[-.8ex]but everybody calls me\\[.2ex]{\color{colorgold}calculus}}
+%\subtitle{A TallCats talk}
+\author{Matteo Capucci}
+\institute{University of Strathclyde}
+\date{March 11th, 2021\\(Day 434 of the COVID Era)}
+
+\begin{document}
+	\begin{frame}[plain]
+		\maketitle
+	\end{frame}
+
+	\input{slides/intro.tex}
+	\input{slides/song.tex}
+	\input{slides/outro.tex}
+
+	\begin{framecard}
+		{\color{white}
+		\bfseries
+
+		\hugetext{Thanks for your attention!}
+		\largetext {Questions?}}
+	\end{framecard}
+
+	\begin{frame}[allowframebreaks]{References}
+		\nocite{*}
+		\printbibliography
+	\end{frame}
+\end{document}
