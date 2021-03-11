@@ -201,9 +201,10 @@
 		\begin{tabularx}{\columnwidth}{C|c}
 			\textbf{algebraic geometry} & \textbf{probability theory}\\[2ex]
 			base scheme $S$ & base probability space $W$\\[2ex]
-			regular function $S \to R$ & essentially bounded r.v. $W \to \R$\\[2ex]
+			regular functions & essentially bounded r.v.\\[2ex]
 			structure sheaf $\O_S$ & `structure sheaf' $L^\infty(-,\R)$\\[2ex]
-			commutative rings & commutative Von Neumann algebras\\[2ex]
+			commutative rings & commutative Von Neumann algebras\\
+			& ({\color{colorgold} kind of})\\[2ex]
 			Grothendieck topos $\Sh S$ & {\color{colorgold}Kolmogorov topos} $\Sh_\aetop W$
 		\end{tabularx}
 	\end{center}
@@ -219,16 +220,13 @@
 \begin{frame}{Geometry}
 	There is a \textbf{measurability structure}
 	\begin{equation*}
-		\O_W : \Msbl \to \Sh W
+		\O_W : \Msbl \to \Sh_\aetop W
 	\end{equation*}
 	given by \textbf{essential functors of points}
 	\begin{equation*}
 		\O_W(E) = \Msbl(-, E) / \underset{\aetop}{=}
 	\end{equation*}
 	and any null-reflecting map $f : W \to V$ induces a morphism
-	% \begin{equation*}
-	% 	f^*\O_V \longtwoto \O_W \quad\text{or, equivalently}\quad \O_V \longtwoto f_*\O_W
-	% \end{equation*}
 	\begin{diagram*}
 		\Sh_\aetop W \&[-3ex] \&[-3ex] \Sh_\aetop V\\
 		\& \Msbl
@@ -239,6 +237,9 @@
 		\arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
 		\arrow[shorten <=20pt, shorten >=30pt, shift left=2, Rightarrow, from=2, to=1-1]
 	\end{diagram*}
+	\begin{equation*}
+		f^*\O_V \longtwoto \O_W \quad\text{or, equivalently}\quad \O_V \longtwoto f_*\O_W
+	\end{equation*}
 \end{frame}
 
 \begin{frame}{Internal notions}
@@ -380,6 +381,8 @@
 		\vspace{-3ex}
 	\end{theorem}
 
+	Therefore we can state \& prove theorems like:
+
 	\vfill
 	\begin{theorem}
 		A stochastic process is almost surely continuous iff it's continuous from the internal point of view.
@@ -413,7 +416,7 @@
 			\arrow[shift right=2, swap]{r}
 		\&[-1ex]
 		\cdots
-			\arrow[shift right=2, swap, "\perp"{below}]{l}
+			\arrow[shift right=2, swap, hook, "\perp"{below}]{l}
 			\arrow[shift right=2, swap]{r}
 		\&[-1ex]
 		\Sh_\aetop W_0
@@ -423,21 +426,20 @@
 
 \begin{frame}{Filtrations}
 	Remember that null-reflecting maps induce maps
-
-	\vfill
-	\begin{diagram*}
-		\Sh_\aetop W_\infty
+	\vspace{-4ex}
+	\begin{center}
+		\Large
+		\begin{diagram*}
+			\Sh_\aetop W_\infty \&[-3ex] \&[-3ex] \Sh_\aetop W_t\\
+			\& \Msbl
+			\arrow[""{name=0, anchor=center, inner sep=0}, "{{1_t}_*}"', shift right=2, from=1-1, to=1-3]
+			\arrow[""{name=1, anchor=center, inner sep=0}, "{1_t^*}"', hook, shift right=2, from=1-3, to=1-1]
+			\arrow["{\O_\infty}", from=2-2, to=1-1]
+			\arrow[""{name=2, anchor=center, inner sep=0}, "{\O_t}"', from=2-2, to=1-3]
+			\arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
 			\arrow[shorten <=20pt, shorten >=30pt, shift left=2, Rightarrow, from=2, to=1-1]
-			\arrow[shift right=2, swap]{rr}{{1_t}_*}
-		\&[-3ex] \&[-3ex]
-		\Sh_\aetop W_t
-			\arrow[shift right=2, swap, "\perp"{below}]{ll}{1_t^*}
-		\\
-		\&
-		\Msbl
-			\arrow{ul}{\O_\infty}
-			\arrow[swap, ""{name=2, anchor=center}]{ur}{\O_t}
-	\end{diagram*}
+		\end{diagram*}
+	\end{center}
 
 	\vfill
 	Hence for every $t \in I$, $E \tin \Msbl$, we have
@@ -464,15 +466,15 @@
 		\O_t^*(E)(A) &\longto \O_\infty(E)(A)\\
 		{\color{colorgold}\lozenge_t A \nto{f} E} &\longmapsto {\color{colorgold}A \into \lozenge_t A \nto{f} E}
 	\end{eqalign*}
-	Notice: $\lozenge_t A \subseteq (W, \F_t)$, while $A \subseteq (W, \F_\infty)$\\
+	Notice: $\lozenge_t A \subseteq W_t$, while $A \subseteq W_\infty$\\
 	\hspace*{3ex} {\color{colorgold}$\rightsquigarrow$ $\O^*_t(E)$ contains $\F_t$-measurable elements}.
 \end{frame}
 
 \begin{frame}{Filtrations}
-	For each $t \in I$, let $\msbl(t)$ be the image of $\O_t^*(E)$ in $\O_\infty(E)$.\\[1ex]
-	Sheafification extends automatically this definition:
+	For each $t \in I$, let {\color{colorgold}$\msbl(t)$} be the image of $\O_t^*(E)$ in $\O_\infty(E)$.\\[1ex]
+	Sheafification extends this definition: given $\tau \tin \Delta I$,
 	\begin{equation*}
-		W \forces f \in \msbl(\tau) \sse \text{for all $s \in I$, $\{\tau = s\} \forces f \in \msbl(s)$}
+		W \forces e \in \msbl(\tau) \sse \text{for all $s \in I$, $\{\tau = s\} \forces e \in \msbl(s)$}
 	\end{equation*}
 
 	\vfill
@@ -484,7 +486,7 @@
 	\vfill
 	We can extend the definition of $\msbl$ to $\O_\infty(I)$:
 	\begin{equation*}
-		W \forces \forall \tau \tin \O_\infty(E),\ \msbl(\tau) \Leftrightarrow \forall \sigma \tin \Delta I,\ \sigma \leq \tau \hey \msbl(\sigma)
+		W \forces \forall \tau \tin \O_\infty(I),\ \msbl(\tau) \Leftrightarrow \forall \sigma \tin \Delta I,\ \sigma \leq \tau \hey \msbl(\sigma)
 	\end{equation*}
 	This recovers $\F_\tau$-measurability for a \textbf{random time} $\tau : W \to I$.
 \end{frame}
@@ -541,7 +543,7 @@
 % \end{frame}
 
 \begin{frame}{Conditional expectation}
-	Given $\P \tin \M_\infty$, its restriction $\P_t$ to $\F_t$ is given by a canonical inclusion
+	Restrictions of measures is given by the canonical inclusion
 	\begin{diagram*}
 		{1_t}_*\M_\infty \arrow[hook]{r}{-\vert_t} \& \M_t
 	\end{diagram*}
@@ -565,5 +567,16 @@
 		X &\mapsto %{\bigvee \{q_t \in \QNO^+_t \suchthat q_t \P_t \leq (\bigvee \{q_\infty \P \in \Q_\infty^+ \suchthat q_\infty \leq X\})_t}\\
 		\bigvee \{q_t \in 1_t^*\QNO^+_t \suchthat q_t \leq ({\textstyle \int} X\,\de \P) / \P\}
 	\end{eqalign*}
-	$\rightsquigarrow$ {\color{colorgold}best approximation at $t$ of $X$'s average}.
+	\begin{center}
+		{\color{colorgold}best approximation at $t$ of $X$'s average}.
+	\end{center}
+\end{frame}
+
+\begin{frame}{Martingales, finally}
+	\begin{definition}
+		A map $X : \Delta I \to \O_\infty(E)$ is a \textbf{martingale} if it is adapted and
+		\begin{equation*}
+			W \forces \forall t \tin \Delta I\,\, \forall s \geq t,\ \Exp[X(t+s) | \F_t]_\infty = X(t),
+		\end{equation*}
+	\end{definition}
 \end{frame}

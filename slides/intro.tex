@@ -39,18 +39,21 @@
 \end{frame}
 
 \begin{frame}{Preliminaries}
-	An $E$-valued \textbf{stochastic process} on $W$ is a collection of measurable maps
-	\begin{equation*}
-		X_t : W \to E, \qquad t \in I
-	\end{equation*}
-	which is measurable in the first slot; where $I$ is a poset of \textbf{time}s and $E$ is a measurable space of \textbf{values}.
+	\begin{definition}
+		An $E$-valued \textbf{stochastic process} on $W$ is a collection of measurable maps
+		\begin{equation*}
+			X_t : W \to E, \qquad t \in I
+		\end{equation*}
+		where $I$ is a poset of \textbf{time}s and $E$ is a measurable space of \textbf{values}.
+	\end{definition}
 
 	\begin{example}
 		Toss a coin and bet $1\$$ on heads: $W = \{H,T\}^\N$, $E = \R$, $I = \N$,
 		\begin{equation*}
-			X(\omega, t) = \sum_{i=0}^t \ind_{\#i = H}(\omega)
+			X_n(\omega) = \sum_{i=0}^n (\delta^{\omega_i}_H(\omega) - \delta^{\omega_i}_T(\omega))
 		\end{equation*}
 	\end{example}
+	\vspace{-3ex}
 	\begin{example}
 		You have a financial portfolio, your profit are a stochastic process $X_t$ which is a function of another stochastic process $M_t$, the market.
 	\end{example}
@@ -67,9 +70,9 @@
 
 	\vfill
 	\begin{definition}
-		An \textbf{adapted process} is a process $X : W \times I \to E$ such that
+		An \textbf{adapted process} is a process $\{X_t\}_{t \in I}$ such that
 		\begin{center}
-			for each $t \in I$, $X_t$ is $\F_t$-measurable.
+			for each $t \in I$, \quad $X_t$ is $\F_t$-measurable.
 		\end{center}
 	\end{definition}
 	i.e. the value of $X$ at $t$ only depends on info available until that point.
