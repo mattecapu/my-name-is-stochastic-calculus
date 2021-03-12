@@ -13,11 +13,12 @@
 		Space of `outcomes' of a stochastic experiment
 		\item $\F : \sigma$-field\\
 		Space of `events', i.e. $\sigma$-algebra of subsets of $W$
-		\item $\P : \F \to \R^+$\\
+		\item $\P : \F \to [0,1]$\\
 		'Probability measure', i.e. an assignment of beliefs to events
 	\end{itemize}
+	\vfill
 	\begin{center}
-		\includegraphics[width=.5\columnwidth]{figures/proba-space.png}
+		\includegraphics[width=.45\columnwidth]{figures/proba-space.png}
 	\end{center}
 \end{frame}
 
@@ -28,6 +29,7 @@
 	\end{equation*}
 	the $\sigma$-ideal of null sets.
 
+	\vfill
 	Let $V = (V, \G, \Q)$.
 	\begin{center}
 		\text{\underline{measurable maps}}\\
@@ -48,14 +50,14 @@
 	\end{definition}
 
 	\begin{example}
-		Toss a coin and bet $1\$$ on heads: $W = \{H,T\}^\N$, $E = \R$, $I = \N$,
+		Toss a coin and bet $1\$$ on heads: $W = \{H,T\}^\N$, $E = \Z$, $I = \N$,
 		\begin{equation*}
 			X_n(\omega) = \sum_{i=0}^n (\delta^{\omega_i}_H(\omega) - \delta^{\omega_i}_T(\omega))
 		\end{equation*}
 	\end{example}
 	\vspace{-3ex}
 	\begin{example}
-		You have a financial portfolio, your profit are a stochastic process $X_t$ which is a function of another stochastic process $M_t$, the market.
+		Prices of a market form a stochastic process $M_t$. The value of your portfolio is a certain function $X_t = f(M_t)$.
 	\end{example}
 \end{frame}
 
@@ -66,7 +68,7 @@
 	\end{definition}
 
 	\vfill
-	It gives a `causal structure' to the observed events.
+	It gives a `\gold{\bfseries causal structure}' to the observed events.
 
 	\vfill
 	\begin{definition}
@@ -92,7 +94,7 @@
 	\end{enumerate}
 
 	\vfill
-	Here $B_t$ is a \textbf{Brownian motion} $\rightsquigarrow$ archetypal diffusion process
+	\gold{Here $B_t$ is a \textbf{Brownian motion} $\rightsquigarrow$ archetypal diffusion process}
 
 	\vfill
 	It's not exactly like elementary calculus though, e.g.
@@ -120,5 +122,5 @@
 	\end{center}
 
 	\vfill
-	{\color{colorgold}\textbf{Warning}: work still in progress!}
+	\gold{\textbf{Warning}: work still in progress!}
 \end{frame}

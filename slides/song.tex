@@ -25,7 +25,7 @@
 	\end{proof}
 	\vfill
 
-	In \cite{scott1967proof}, Dana Scott forces CH using a Boolean-valued model whose algebra of truth values is an essential algebra.
+	In \cite{scott1967proof}, Dana Scott forces $\neg$CH using a Boolean-valued model whose algebra of truth values is an essential algebra.
 
 	Therefore in \cite{capucci2020internal}, we call
 	\begin{equation*}
@@ -38,10 +38,10 @@
 	This tripos captures `logic valued in $W$':
 	\vfill
 	\begin{enumerate}
-		\item A predicate on $X : \Set$ is a map $\varphi : X \to \alg F$ (\textit{\color{colorgold}$W$-predicates}).
+		\item A predicate on $X : \Set$ is a map $\varphi : X \to \alg F$ (\textit\gold{$W$-predicates}).
 		\item $\land, \lor, \hey$ are pointwise essential intersection/union/implication.
-		\item $\true = [W] = $ \textit{\color{colorgold}almost everywhere},\\
-		$\false = [\varnothing] =$ \textit{\color{colorgold}almost nowhere}.
+		\item $\true = [W] = $ \gold{almost everywhere},\\
+		$\false = [\varnothing] =$ \gold{almost nowhere}.
 		\item Quantifiers:
 		\begin{equation*}
 			\forall x \tin X \varphi(x) := \bigwedge_{x \in X} \varphi(x), \qquad \exists x \tin X \varphi(x) := \bigvee_{x \in X} \varphi(x)
@@ -156,7 +156,7 @@
 % 			(X \tin \cat C,\ {\sim_X} \in \tripos T(X \times X))
 % 		\end{equation*}
 % 		where $\sim_X$ is a \textbf{partial} equivalence relation (PER)\\
-% 		{\color{colorgold}$\qquad \rightsquigarrow$ `$x \sim_X x$' is thought of as `$x \in X$'}.
+% 		\gold{$\qquad \rightsquigarrow$ `$x \sim_X x$' is thought of as `$x \in X$'}.
 % 		\item Maps $(X, \sim_X) \to (Y, \sim_Y)$ are given by functional relations $F \in \tripos T(X \times Y)$. They compose as relations.
 % 	\end{enumerate}
 
@@ -204,8 +204,8 @@
 			regular functions & essentially bounded r.v.\\[2ex]
 			structure sheaf $\O_S$ & `structure sheaf' $L^\infty(-,\R)$\\[2ex]
 			commutative rings & commutative Von Neumann algebras\\
-			& ({\color{colorgold} kind of})\\[2ex]
-			Grothendieck topos $\Sh S$ & {\color{colorgold}Kolmogorov topos} $\Sh_\aetop W$
+			& (\gold{kind of})\\[2ex]
+			Grothendieck topos $\Sh S$ & \gold{Kolmogorov topos} $\Sh_\aetop W$
 		\end{tabularx}
 	\end{center}
 	\vfill
@@ -217,7 +217,7 @@
 	\end{frame}
 }
 
-\begin{frame}{Geometry}
+\begin{frame}{Measurability structures}
 	There is a \textbf{measurability structure}
 	\begin{equation*}
 		\O_W : \Msbl \to \Sh_\aetop W
@@ -235,15 +235,55 @@
 		\arrow["{\O_W}", from=2-2, to=1-1]
 		\arrow[""{name=2, anchor=center, inner sep=0}, "{\O_V}"', from=2-2, to=1-3]
 		\arrow["\dashv"{anchor=center, rotate=-90}, draw=none, from=1, to=0]
-		\arrow[shorten <=20pt, shorten >=30pt, shift left=2, Rightarrow, from=2, to=1-1]
+		\arrow[shorten <=20pt, shorten >=30pt, shift left=2, Rightarrow, "\hat f", from=2, to=1-1]
 	\end{diagram*}
 	\begin{equation*}
-		f^*\O_V \longtwoto \O_W \quad\text{or, equivalently}\quad \O_V \longtwoto f_*\O_W
+		\hat f : f^*\O_V \longtwoto \O_W \quad\text{or, equivalently}\quad \check f : \O_V \longtwoto f_*\O_W
 	\end{equation*}
 \end{frame}
 
+\begin{frame}{Measurability structures}
+	A map $f:W \to V$ induces a map $f^{-1} :\alg G \to \alg F$ which has both adjoints, in particular
+	\begin{eqalign*}
+		f^{-1} \vdash \lozenge_f : \alg F &\longto \alg G\\
+						A	&\longmapsto \bigwedge \{B \in \G \suchthat A \leq f^{-1}(B) \}
+	\end{eqalign*}
+	%\gold{We can interpret it as a `\textit{possibly at $t$}' modal operator.}
+
+	\vfill
+	Thus for each $A \in \alg F$:
+	\begin{equation*}
+		f^*\O_V(E)(A) = \O_V(E)(\lozenge_f A) = \Msbl(\lozenge_f A, E) / \underset{\aetop}{=}
+	\end{equation*}
+	and
+	\begin{eqalign*}
+		\hat f_E : f^* \O_V(E)(A) &\longto \O_W(E)(A)\\
+		\gold{\lozenge_f A \nto{g} E} &\longmapsto \gold{A \into \lozenge_f A \nto{g} E}
+	\end{eqalign*}
+
+	\vfill
+	Notice: $\lozenge_f A \subseteq V$, while $A \subseteq W$.\\
+	Hence \gold{$\hat f$ picks $V$-measurable elements among $W$-measurable elements.}
+\end{frame}
+
 \begin{frame}{Internal notions}
-	We can start looking for the objects of probability theory inside $\Sh_\aetop W$ (with the help of \cite{jackson2006sheaf}).
+	We can start looking for the objects of probability theory inside $\Sh_\aetop W$:
+
+	\vfill
+	\begin{enumerate}
+		\item Random variables
+		\item Measures
+		\item Integrals
+		\item Densities
+		\item Stochastic processes
+		\item Adapted processes
+	\end{enumerate}
+
+	\vfill
+	(2)-(4) come from \cite{jackson2006sheaf}.
+
+	\vfill
+	If there's time, as an application, we'll define \gold{\bfseries martingales}.
 \end{frame}
 
 \begin{frame}{Random variables}
@@ -251,14 +291,16 @@
 	\begin{equation*}
 		\RNO_W = \O_W(\R)
 	\end{equation*}
-	Hence this confirms `random variables' are indeed `variables' in a `random' setting.
+	Hence this confirms \gold{`random variables' are indeed `variables' in a `random' setting.}
+
 	\vfill
 	Then we can prove things like
 	\begin{theorem}
 		A sequence of random variables $\{X_n\}_{n \in \N}$ converges almost surely iff it converges in the usual sense as a sequence of internal real numbers.
 	\end{theorem}
-	\vfill
-	Also, $L^p_{\color{colorgold}\mathsf{loc}}$ spaces become subsets of the real numbers.
+
+	% \vfill
+	% Also, $L^p_\gold{\mathsf{loc}}$ spaces become subsets of the real numbers.
 \end{frame}
 
 \begin{frame}{Integration}
@@ -266,17 +308,18 @@
 	\begin{equation*}
 		\M = \{ \mu \in \aetop(P\Q^+) \suchthat \text{$\mu$ is an `additive' upper cut}\}
 	\end{equation*}
+
+	\vfill
 	Thus integration is straightforward: first, on simple rational functions:
 	\begin{eqalign*}
-		\int -\,\de - : \QNO^+ \times \M &\longto \M\\
+		\int_- -\,\de - : \QNO^+ \times \M &\longto \M\\
 		(q, \mu) &\longmapsto q \mu
 	\end{eqalign*}
 	then we extend by continuity:
 	\begin{eqalign*}
-		\int -\,\de - : \RNO^+ \times \M &\longto \M\\
-		(X, \mu) &\longmapsto \underbrace{\bigvee_{q \leq X} q \mu}_{\color{colorgold}\int_{-} X\,\de\mu}
+		\int_- -\,\de - : \RNO^+ \times \M &\longto \M\\
+		(X, \mu) &\longmapsto \underbrace{\bigvee_{q \leq X} q \mu}_\gold{\int_{-} X\,\de\mu}
 	\end{eqalign*}
-	In particular, we defined $\Exp[X]$.
 \end{frame}
 
 \begin{frame}{Radon--Nikodym}
@@ -284,19 +327,21 @@
 
 	\vfill
 	\begin{theorem}[Radon--Nikodym]
-		Let $\nu$ be a measure on $W$ such that $\mu(A) = 0$ implies $\nu(A) = 0$.
-		Then there exists a positive measurable random variable $\der{\nu}{\mu}$ such that
+		Let $\nu$ be a measure on $(W, \F, \mu)$ such that $\mu(A) = 0$ implies $\nu(A) = 0$.
+		Then there exists a positive random variable $\der{\nu}{\mu}$ such that
 		\begin{equation*}
 			\int_{-} \der{\nu}{\mu} \, \de \mu = \nu(-)
 		\end{equation*}
 	\end{theorem}
 
 	\vfill
-	It says every absolutely continuous measure wrt $\mu$ has a $\mu$-density.
+	It says every \gold{absolutely continuous measure wrt $\mu$ has a $\mu$-density}.
 \end{frame}
 
 \begin{frame}{Radon--Nikodym}
-	We can prove the theorem internally (\cite{jackson2006sheaf}).
+	We can prove the theorem internally:
+
+	\vfill
 	Fix $\mu \tin \M$:
 	\begin{enumerate}
 		\item $\mu$-integration in an arrow $\int - \de \mu : \RNO^+ \to \M$.
@@ -306,42 +351,13 @@
 			\der{-}{\mu} : \M^{\ll \mu} \longto \RNO^+
 		\end{equation*}
 	\end{enumerate}
+
+	\vfill
 	To do so, one fixes $\nu \tin \M^{\ll \mu}$ and defines
 	\begin{equation*}
 		\der{\nu}{\mu} = \bigvee \{q \in \QNO^+ \suchthat q \mu \leq \nu\}
 	\end{equation*}
 	up to technicalities, this concludes the proof!
-\end{frame}
-
-\begin{frame}{Martingales}
-	For stochastic calculus, the most useful application of Radon--Nikodym is given by the definition of \textbf{conditional expectations}:
-	\begin{definition}
-		Given a filtration $\{F_t\}_{t \in I}$, the conditional expectation of $X$ at $t$ is defined as
-		\begin{equation*}
-			\Exp[X | \F_t] = \der{(\int X \, \de\P)\vert_{\F_t}}{\P\vert_{\F_t}}
-		\end{equation*}
-	\end{definition}
-	%This is a $\F_t$-measurable r.v. representing the average of $X$ conditioned by the state of the world at time $t$.
-	\begin{definition}
-		A \textbf{martingale} is an adapted stochastic process such that
-		\begin{equation*}
-			\Exp[ X_{t+s} | \F_t] = X_t
-		\end{equation*}
-	\end{definition}
-	It's a process not expected to change, e.g. the coin tosses bet, $B_t$.
-\end{frame}
-
-\begin{frame}{Internalizing martingales}
-	To define a martingale internally we need
-
-	\vfill
-	\begin{enumerate}
-		\item An internal definition of `stochastic process'
-		\item An internal definition of `adaptedness' $\rightsquigarrow$ {\color{colorgold}filtrations}
-		\item An internal definition of `conditional expectation at $t$'.
-	\end{enumerate}
-
-	\vfill
 \end{frame}
 
 \begin{frame}{Stochastic processes}
@@ -392,7 +408,7 @@
 % If X is not a measurable process
 
 \begin{frame}{Filtrations}
-	We need a way to express `\textit{measurability at $t$}' for elements in $\O_W(E)$.
+	To define \textbf{adapted} processes, we need to express `\textit{measurability at $t$}' for elements in $\O_W(E)$.
 
 	\vfill
 	A filtration induces a chain of null-reflecting maps (each carried by $1_W$)
@@ -444,35 +460,36 @@
 	\vfill
 	Hence for every $t \in I$, $E \tin \Msbl$, we have
 	\begin{equation*}
-		1_t^*\O_t(E) =: \O_t^*(E) \longto \O_\infty(E)
+		\hat 1_t^E : \underbrace{\O_t^*(E)}_{:= 1_t^*\O_t(E)} \longto \O_\infty(E)
 	\end{equation*}
+	\gold{$\rightsquigarrow$ $\O^*_t(E)$ contains $\F_t$-measurable elements}.
 \end{frame}
 
-\begin{frame}{Filtrations}
-	The inclusion $\alg F_t \into \alg F_\infty$ has both adjoints, in particular
-	\begin{eqalign*}
-		1_t^{-1} \dashv \lozenge_t : \alg F_\infty &\longto \alg F_t\\
-						A	&\longmapsto \bigwedge \{B \in \F_t \suchthat A \leq B \}
-	\end{eqalign*}
-	{\color{colorgold}We can interpret it as a `\textit{possibly at $t$}' modal operator.}
+% \begin{frame}{Filtrations}
+% 	The inclusion $\alg F_t \into \alg F_\infty$ has both adjoints, in particular
+% 	\begin{eqalign*}
+% 		1_t^{-1} \dashv \lozenge_t : \alg F_\infty &\longto \alg F_t\\
+% 						A	&\longmapsto \bigwedge \{B \in \F_t \suchthat A \leq B \}
+% 	\end{eqalign*}
+% 	\gold{We can interpret it as a `\textit{possibly at $t$}' modal operator.}
 
-	\vfill
-	Thus for each $A \in \alg F_\infty$:
-	\begin{equation*}
-		\O_t^*(E)(A) := \O_t(E)(\lozenge_t A) = \Msbl(\lozenge_t A, E) / \underset{\aetop}{=}
-	\end{equation*}
-	and
-	\begin{eqalign*}
-		\O_t^*(E)(A) &\longto \O_\infty(E)(A)\\
-		{\color{colorgold}\lozenge_t A \nto{f} E} &\longmapsto {\color{colorgold}A \into \lozenge_t A \nto{f} E}
-	\end{eqalign*}
-	Notice: $\lozenge_t A \subseteq W_t$, while $A \subseteq W_\infty$\\
-	\hspace*{3ex} {\color{colorgold}$\rightsquigarrow$ $\O^*_t(E)$ contains $\F_t$-measurable elements}.
-\end{frame}
+% 	\vfill
+% 	Thus for each $A \in \alg F_\infty$:
+% 	\begin{equation*}
+% 		\O_t^*(E)(A) := \O_t(E)(\lozenge_t A) = \Msbl(\lozenge_t A, E) / \underset{\aetop}{=}
+% 	\end{equation*}
+% 	and
+% 	\begin{eqalign*}
+% 		\O_t^*(E)(A) &\longto \O_\infty(E)(A)\\
+% 		\gold{\lozenge_t A \nto{f} E} &\longmapsto \gold{A \into \lozenge_t A \nto{f} E}
+% 	\end{eqalign*}
+% 	Notice: $\lozenge_t A \subseteq W_t$, while $A \subseteq W_\infty$\\
+% 	\hspace*{3ex} \gold{$\rightsquigarrow$ $\O^*_t(E)$ contains $\F_t$-measurable elements}.
+% \end{frame}
 
 \begin{frame}{Filtrations}
-	For each $t \in I$, let {\color{colorgold}$\msbl(t)$} be the image of $\O_t^*(E)$ in $\O_\infty(E)$.\\[1ex]
-	Sheafification extends this definition: given $\tau \tin \Delta I$,
+	For each $t \in I$, let \gold{$\msbl(t)$} be the image of $\hat 1_t$.\\[1ex]
+	Sheafification extends its definition: given $\tau \tin \Delta I$,
 	\begin{equation*}
 		W \forces e \in \msbl(\tau) \sse \text{for all $s \in I$, $\{\tau = s\} \forces e \in \msbl(s)$}
 	\end{equation*}
@@ -484,11 +501,13 @@
 	\end{diagram*}
 
 	\vfill
-	We can extend the definition of $\msbl$ to $\O_\infty(I)$:
+	We can further extend $\msbl$ to $\O_\infty(I)$:
 	\begin{equation*}
 		W \forces \forall \tau \tin \O_\infty(I),\ \msbl(\tau) \Leftrightarrow \forall \sigma \tin \Delta I,\ \sigma \leq \tau \hey \msbl(\sigma)
 	\end{equation*}
-	This recovers $\F_\tau$-measurability for a \textbf{random time} $\tau : W \to I$.
+
+	\vfill
+	\gold{This recovers $\F_\tau$-measurability for a \textbf{random time} $\tau : W \to I$}.
 \end{frame}
 
 \begin{frame}{Filtrations}
@@ -542,6 +561,39 @@
 % 	\end{theorem}
 % \end{frame}
 
+
+\begin{frame}{Martingales}
+	It's a process not expected to change, e.g. the coin tosses bet, $B_t$.
+
+	\vfill
+	\begin{definition}
+		Given a filtration $\{F_t\}_{t \in I}$, the conditional expectation of $X$ at $t$ is defined as
+		\begin{equation*}
+			\Exp[X | \F_t] = \der{(\int X \, \de\P)\vert_{\F_t}}{\P\vert_{\F_t}}
+		\end{equation*}
+	\end{definition}
+	%This is a $\F_t$-measurable r.v. representing the average of $X$ conditioned by the state of the world at time $t$.
+	\begin{definition}
+		A \textbf{martingale} is an adapted stochastic process such that
+		\begin{equation*}
+			\Exp[ X_{t+s} | \F_t] = X_t
+		\end{equation*}
+	\end{definition}
+\end{frame}
+
+% \begin{frame}{Internalizing martingales}
+% 	To define a martingale internally we need
+
+% 	\vfill
+% 	\begin{enumerate}
+% 		\item An internal definition of `stochastic process'
+% 		\item An internal definition of `adaptedness' $\rightsquigarrow$ \gold{filtrations}
+% 		\item An internal definition of `conditional expectation at $t$'.
+% 	\end{enumerate}
+
+% 	\vfill
+% \end{frame}
+
 \begin{frame}{Conditional expectation}
 	Restrictions of measures is given by the canonical inclusion
 	\begin{diagram*}
@@ -568,15 +620,15 @@
 		\bigvee \{q_t \in 1_t^*\QNO^+_t \suchthat q_t \leq ({\textstyle \int} X\,\de \P) / \P\}
 	\end{eqalign*}
 	\begin{center}
-		{\color{colorgold}best approximation at $t$ of $X$'s average}.
+		\gold{best approximation at $t$ of $X$'s average}.
 	\end{center}
 \end{frame}
 
-\begin{frame}{Martingales, finally}
+\begin{frame}{Martingales}
 	\begin{definition}
 		A map $X : \Delta I \to \O_\infty(E)$ is a \textbf{martingale} if it is adapted and
 		\begin{equation*}
-			W \forces \forall t \tin \Delta I\,\, \forall s \geq t,\ \Exp[X(t+s) | \F_t]_\infty = X(t),
+			W \forces \forall t \tin \Delta I\,\, \forall s \geq t,\ \Exp[X(s) | \F_t]_\infty = X(t),
 		\end{equation*}
 	\end{definition}
 \end{frame}
