@@ -18,4 +18,6 @@ figures/sd/*.tex
 
 bin/**
 
+recording.mp4
+
 !main.pdf

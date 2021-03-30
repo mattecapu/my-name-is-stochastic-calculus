@@ -24,17 +24,6 @@
 
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 
-\renewcommand<>{\sout}[1]{%
-	\alt#2{\beameroriginal{\sout}{#1}}{#1}%
-}
-
-\AtBeginDocument{%
- \abovedisplayskip=1ex
- \belowdisplayskip=1ex
- \abovedisplayshortskip=0pt
- \belowdisplayshortskip=7pt minus 4pt
-}
-
 \addbibresource{./bibliography.bib}
 
 \title{My name is\\[-.8ex]\gold{stochastic calculus}\\[-.8ex]but everybody calls me\\[.2ex]\gold{calculus}}
